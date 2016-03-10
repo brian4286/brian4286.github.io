@@ -2,14 +2,14 @@
 
 title: accent
 url: "http://brian.haun.net"
-baseurl: "/"
+baseurl: "http://brian.haun.net"
 
 # This will show up at the top of index page
 site_heading: >
     foo <span class="faded">'s blog</span>
 
-email: your@email.com
-author: yourname
+email: brian@email.tld
+author: brian4286
 # This description will show up in google search results
 # (for index page) etc.
 description: >
@@ -43,7 +43,7 @@ about_stub: >
 
 about_footer: true
 
-twitter_username: AnkitSultana
+twitter_username: brian4286
 github_username: yourgithub
 facebook_id: yourusername
 
