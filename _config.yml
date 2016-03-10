@@ -1,22 +1,22 @@
 # User Settings | Edit there as per required
 
-title: accent
-url: "http://brian.haun.net"
+title: Brian Haun
+url: "http://brian.haun.me"
 baseurl: "/"
 
 # This will show up at the top of index page
 site_heading: >
     foo <span class="faded">'s blog</span>
 
-email: your@email.com
-author: yourname
+email: brian@email.com
+author: brian4286
 # This description will show up in google search results
 # (for index page) etc.
 description: >
-    accent is, as Trump would put it, the best
+The open notebook of a Unix/Linux Infrastructure Engineer ✦ Cloud Architect ✦ Systems Administration ✦ Solutions Delivery.
 
 # This will what will show against &copy; in the footer
-copyright: accent
+copyright: brian4286
 # Toggle your short bio, which will displayed on your index page
 # Just toggle it and run jekyll again to see
 intro: false         # Tip: Remove the span from site_heading if intro is set to true
@@ -44,7 +44,7 @@ about_stub: >
 about_footer: true
 
 twitter_username: AnkitSultana
-github_username: yourgithub
+github_username: brian4286
 facebook_id: yourusername
 
 favicon: true
@@ -57,7 +57,7 @@ tracking_id:  # GA Tracking ID
 
 # Social Stuff | open graph and twitter cards
 og_image: "images/accent.png" # This will show in facebook thumbnails
-twitter_image: "http://ankitsultana.me/images/accent.png?1234" # This will show in twitter cards
+twitter_image: "" # This will show in twitter cards
 
 ####################################
 ####################################
