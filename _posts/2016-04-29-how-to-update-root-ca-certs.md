@@ -9,7 +9,7 @@ For Red Hat Enterprise Linux 5, CentOS 5, Fedora, Scientific Linux and all other
 {% highlight text %}
 box:/# cp /etc/pki/tls/certs/ca-bundle.crt /etc/pki/tls/certs/ca-bundle.crt.bak
 
-box:/# curl http://curl.haxx.se/ca/cacert.pem -o /etc/pki/tls/certs/ca-bundle.crt
+box:/# curl https://curl.haxx.se/ca/cacert.pem -o /etc/pki/tls/certs/ca-bundle.crt
 
 box:/# chmod 444 /etc/pki/tls/certs/ca-bundle.crt
 {% endhighlight %}
