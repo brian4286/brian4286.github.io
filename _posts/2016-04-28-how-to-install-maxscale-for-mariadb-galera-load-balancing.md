@@ -116,6 +116,7 @@ port=6603
 {% endhighlight %}
 
 Now we can run the maxadmin commands to view the status. As you can see the three nodes are in the load balancer. Current server2 (172.16.20.141) is the current Master. You can test this by stopping MariaDB on the node marked Master and watch MaxScale automatically switch. 
+Now we can run the maxadmin commands to view the status. As you can see the three nodes are in the load balancer. Current server2 (172.16.20.141) is the current Master. You can test this by stopping MariaDB on the node marked Master and watch MaxScale automatically switch.
 
 {% highlight text %}
 box:/tmp# maxadmin -pmariadb list servers
