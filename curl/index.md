@@ -29,22 +29,26 @@ curl ... --data-binary @filename
 
 {% highlight text %}
 curl -vvv --resolve 'book.mixu.net:80:123.145.167.189' http://book.mixu.net/
+curl -vvv --resolve 'book.mixu.net:80:123.145.167.189' https://book.mixu.net/
 {% endhighlight %}
 
 Make a request with basic auth enabled
 
 {% highlight text %}
 curl -vvv -u name@foo.com:password http://www.example.com
+curl -vvv -u name@foo.com:password https://www.example.com
 
 or:
 
 curl --user name:password http://www.example.com
+curl --user name:password https://www.example.com
 {% endhighlight %}
 
 **Set the Referer header**
 
 {% highlight text %}
 curl -e http://curl.haxx.se daniel.haxx.se
+curl -e https://curl.haxx.se daniel.haxx.se
 {% endhighlight %}
 
 **Set the User Agent header**
@@ -71,6 +75,7 @@ curl --cookie "name=Daniel"
 
 {% highlight text %}
 curl -o /dev/null -w "Connect: %{time_connect} TTFB: %{time_starttransfer} Total time: %{time_total} \n" http://google.com
+curl -o /dev/null -w "Connect: %{time_connect} TTFB: %{time_starttransfer} Total time: %{time_total} \n" https://google.com
 {% endhighlight %}
 
 **Downloading files from Github**

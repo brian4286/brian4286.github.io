@@ -3,6 +3,7 @@
 ### What am I looking at?
 
 This is the source code for my site brian.haun.me. The theme comes from [accent](http://github.com/bk2dcradle/accent) with light modifications for my use.
+This is the source code for my site brian.haun.me. The theme comes from [accent](https://github.com/bk2dcradle/accent) with light modifications for my use.
 
 ### Who do I work for?
 
