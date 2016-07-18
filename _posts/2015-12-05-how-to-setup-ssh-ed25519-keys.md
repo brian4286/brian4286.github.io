@@ -2,14 +2,14 @@
 title: How To - Setup SSH Ed25519 keys
 ---
 
-So you are still following those old how to guides online about generating ssh keys? I hope you are using the RSA algorithm because DSA has been deprecated starting with [OpenSSH 7](http://www.openssh.com/txt/release-7.0){:target="_blank"}.
+So you are still following those old how to guides online about generating ssh keys? I hope you are using the RSA algorithm because DSA has been deprecated starting with [OpenSSH 7](https://www.openssh.com/txt/release-7.0){:target="_blank"}.
 
->Support for ssh-dss, ssh-dss-cert-* host and user keys is disabled by default at run-time. These may be re-enabled using the instructions at http://www.openssh.com/legacy.html
+>Support for ssh-dss, ssh-dss-cert-* host and user keys is disabled by default at run-time. These may be re-enabled using the instructions at https://www.openssh.com/legacy.html
 
 With the introduction of OpenSSH 6.5 we gained a new algorithm, Ed25519 which is faster, smaller and offers better security. Ed25519 was developed by a team including Daniel J. Bernstein, Niels Duif, Tanja Lange, Peter Schwabe, and Bo-Yin Yang. Any old Unix admin's will instantly recognize Daniel J. Bernstein (djb) the developer of some of the more security focused software ever written including: qmail, djbdns, tinydns and daemontools.
 
 At this point you should be using PBKDF2 (Password-Based Key Derivation Function 2) for all your ssh keys, NO?!, read by post on [Upgrade your existing SSH keys with PBKDF](/2015-07-22-upgrade-your-existing-ssh-keys-with-PKCS#5
-.html){:target="_blank"}. In a nutshell, PBKDF2 is a more advanced method to encrypt the password. It is slower and therefore much harder to decode. You can read more about it in my post above or [RFC 5208](http://tools.ietf.org/html/rfc2898#section-5.2){:target="_blank"}.
+.html){:target="_blank"}. In a nutshell, PBKDF2 is a more advanced method to encrypt the password. It is slower and therefore much harder to decode. You can read more about it in my post above or [RFC 5208](https://tools.ietf.org/html/rfc2898#section-5.2){:target="_blank"}.
 
 No only are we going to create the new key, but we are going to increase the default KDF rounds. The more rounds, the slower the passphrase verification will become, but the ability to brute-force my password will become linearly harder. Since not every OpenSSH server supports Ed25519, it is not the default so have to specify it with -t ed25519 (or type). Then we will specify the -o flag (or option) and increase the number of KDF rounds from the default 16 to 256. The more you increase the rounds the longer it will take to decrypt your password, for example 1000 rounds takes my machine 13 seconds, 4000 rounds takes ~52 seconds.
 
