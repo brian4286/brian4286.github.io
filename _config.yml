@@ -32,7 +32,7 @@ permalink: /:title.html
 
 
 # Comments are powered by disqus
-comments: false
+comments: true
 
 # keep about_stub roughly 12 words long for best results
 # This will show up at the bottom of each post
@@ -50,13 +50,13 @@ facebook_id: yourusername
 favicon: true
 favicon_location: "images/favicon.ico"
 
-profile_picture: images/temp.png
+profile_picture: images/brian4286.jpg
 paginate: 16
 paginate_path: "/page/:num"
-tracking_id:  # GA Tracking ID
+tracking_id: UA-80969106-1 # GA Tracking ID
 
 # Social Stuff | open graph and twitter cards
-og_image: "images/accent.png" # This will show in facebook thumbnails
+og_image: "images/brian4286.jpg" # This will show in facebook thumbnails
 twitter_image: "" # This will show in twitter cards
 
 ####################################
