@@ -1,6 +1,7 @@
 ---
 title: How To - Use parted for disk partitioning and resizing
 description: How to use parted.
+keywords: brian4286, Brian Haun, how to, parted, parted, partitions, lvm, fdisk, volume management
 ---
 
 So you just added that new disk or RAID that is grater then 2TB+. You quickly realize that fdisk will no longer allow you to add a partition. The reason is fdisk does not support GPT partition tables or it is limited to 2TB. GNU parted is going to be your new friend as it supports EFI/GPT partition tables.
@@ -8,6 +9,8 @@ So you just added that new disk or RAID that is grater then 2TB+. You quickly re
 You may be thinking, Brian can't I just throw a filesystem or LVM on the raw device? Technically you are correct, and with recent versions of boot loaders you can book LVM directly. If you manage you own environment and no other [SA's](https://en.wikipedia.org/wiki/System_administrator){:target="_blank"} will login, then go ahead and skip it. So someone does not see the device as unused and format it later it may be best to just format the disk.
 
 We are going to assume that the new raw disk is /dev/xvda. parted has a shell much like fdisk but you can also invoke the -s or script flag which we will get into later. First assuming parted is installed, type parted in your shell:
+
+### Parted Shell
 
 {% highlight nginx %}
 box:/# parted /dev/xvda
@@ -18,6 +21,8 @@ GNU Parted 3.1
 Using /dev/xvda
 Welcome to GNU Parted! Type 'help' to view a list of commands.
 {% endhighlight %}
+
+### Print partitions
 
 Let's double check to see if any existing partitions exist on this disk. In the parted shell type 'p' to get a the latest printout. You can see we have 4 existing partitions that will need to be removed.
 
@@ -41,7 +46,9 @@ Number  Start   End     Size    Type     File system  Flags
 (parted)                                      
 {% endhighlight %}
 
-While this is not a large disk, I am going to set this as a GPT partition table by invoking the "mklabel" command. Then I will remove the existing partitions "rm x" and finally we will print out the partition table. Keep in mind that while I have done this, the partition table is not written yet - just like fdisk:
+### Label block device
+
+While this is not a large block device, I am going to set this as a GPT partition table by invoking the "mklabel" command. Then I will remove the existing partitions "rm x" and finally we will print out the partition table. Keep in mind that while I have done this, the partition table is not written yet - just like fdisk:
 
 {% highlight nginx %}
 (parted) mklabel gpt
@@ -64,6 +71,8 @@ Number  Start  End  Size  File system  Name  Flags
 (parted)                                       
 {% endhighlight %}
 
+### Create first partition
+
 Now that we have the old partitions removed, lets start by making our first partition. The command "mkpart" is invoked and we will add a "primary" partition starting from the first usable block "1" and consume "50%" of the disk and finally the "p" will print the output. Since this is a external drive and will be managed my LVM, you have no real need to create multiple partitions other then to show you it can be done. You can interchangeably use percentages (%), MB or GB, for ease of this how to I am going to show you percentages.
 
 {% highlight nginx %}
@@ -82,6 +91,8 @@ Number  Start   End     Size    File system  Name     Flags
 
 (parted)
 {% endhighlight %}
+
+### Create second partition
 
 Here we will invoke the same command but start at "50%" of the disk and end at "100%". At this point 100% of the disk is split evenly between two partitions.
 
@@ -103,6 +114,8 @@ Number  Start   End     Size    File system  Name     Flags
 (parted)
 {% endhighlight %}
 
+### Enable the flags
+
 Since I want to use lvm, I am going to set a [flag (GNU parted manual)](https://www.gnu.org/software/parted/manual/html_chapter/parted_2.html#SEC28){:target="_blank"}. We "set" the flag on partition "2" which will be "lvm" flag and turn it "on".
 
 {% highlight nginx %}
@@ -122,6 +135,8 @@ Number  Start   End     Size    File system  Name     Flags
 
 (parted)
 {% endhighlight %}
+
+### Flag the second partition
 
 To show how we can set a separate flag, I will enable the "boot" flag on the "1"st partition, as if I were going to use this as boot device. Finally to write all the partition tables I will just "quit". You can run the parted shell again and invoke "p" to verify the changes have been written.
 
@@ -143,6 +158,8 @@ Number  Start   End     Size    File system  Name     Flags
 (parted) quit
 {% endhighlight %}
 
+### Scripted, verify any existing partitions
+
 The parted command as I noted previously has the -s or script flag. This makes it far easier in most cases to do the same commands but directly in the shell, which is cleaner and easier for me. You may want to use this if you are automating.
 
 What we will do here is after invoking the script flag (-s) is couple all the individual commands together into one long command.
@@ -160,6 +177,8 @@ Disk Flags:
 
 Number  Start  End  Size  Type  File system  Flags
 {% endhighlight %}
+
+### Fully script partitioning
 
 Now that we are sure we are working on a raw disk, lets do this in a one-liner...
 

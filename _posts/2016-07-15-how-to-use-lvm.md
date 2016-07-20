@@ -1,6 +1,7 @@
 ---
 title: How To - Work with LVM (Logical Volume Management)
 description: How to work with LVM
+keywords: brian4286, Brian Haun, how to, lvm, logical volume management, pvcreate, pvremove, pvextend
 ---
 
 {% highlight nginx %}
